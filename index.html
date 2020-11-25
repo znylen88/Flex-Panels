@@ -122,6 +122,23 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll('.panel'); /* selects all panels */
+
+    function toggleOpen() {
+      this.classList.toggle('open'); /* function to add open class to panels */
+    }
+
+    function toggleActive(e) {
+      console.log(e.propertyName);
+      if (e.propertyName.includes('flex')) { /* two properties but need to just select 'flex' */
+        this.classList.toggle('open-active'); /* adds 'open-active' class to panels */
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen)); 
+    /* loops through panels and adds class of 'open' when clicked */
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+    /* loops through panels and adds class of 'open-active' when transition of add class 'open' ends */
 
   </script>
 
